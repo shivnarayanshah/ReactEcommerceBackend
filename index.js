@@ -7,13 +7,12 @@ import cors from "cors";
 import orderRoutes from "./routes/orderRoutes.js";
 
 import productRoutes from "./routes/productRoutes.js";
-
+import dotenv from "dotenv";
+dotenv.config();
 const server = express();
 
 mongoose
-  .connect(
-    "mongodb+srv://shivnarayan2072:%40Kathmandu01@shivnarayan.daflsuv.mongodb.net/Ecommerce"
-  )
+  .connect(process.env.DB_URL)
   .then((val) => {
     server.listen(5000, () => {
       console.log(
